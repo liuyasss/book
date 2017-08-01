@@ -395,4 +395,81 @@ package_runoob.test1.print_info()
 package_runoob.test2.print_info()
 ```
 
-进度 https://www.runoob.com/python/python-files-io.html  添加
+### Python File I/O
+
+#### 读
+
+```python
+file = open("text.txt", "r", encoding='utf-8')	
+# "text.txt"---->操作的文件  "r"---->只读	,	编码格式
+s = file.read()
+print(s)
+file.close()
+```
+
+#### 写
+
+```python
+file = open("text.txt", "w", encoding='utf-8')
+file.write("this is write")
+file.flush()
+file.close()
+```
+
+#### 追加
+
+```python
+file = open("text.txt", "a", encoding='utf-8')
+file.write("this is append")
+file.flush()
+file.close()
+```
+
+#### 重命名和删除文件
+
+> Python的os模块提供执行文件处理操作的方法，比如重命名和删除文件。
+>
+> 要使用这个模块，必须先导入它，然后才可以调用相关的各种功能。
+>
+> rename()方法：
+>
+> rename()方法需要两个参数，当前的文件名和新文件名。
+
+```python
+import os
+ 
+# 重命名文件test1.txt到test2.txt。
+os.rename( "test1.txt", "test2.txt" )
+
+# 删除一个已经存在的文件test2.txt
+os.remove("test2.txt")
+```
+
+#### 目录
+
+```python
+import os
+
+# 创建目录
+os.mkdir("newdir")
+
+# 切换目录 将当前目录改为"/home/newdir"
+os.chdir("/home/newdir")
+
+# 给出当前的目录
+print os.getcwd()
+
+# 删除”/tmp/test”目录 目录必须是空目录
+os.rmdir( "/tmp/test"  )　
+
+# ps:如何删除文件夹？
+
+```
+
+### Python面向对象
+
+#### 下划线方法
+
+- \___foo__\_: 定义的是特例方法，类似\_\_ __init__\_\_() 之类的。
+- \___foo__: 以单下划线开头的表示的是 protected 类型的变量或者方法，即保护类型只能允许其本身与子类进行访问，不能用于from module import *
+- \_\___foo__: `双下划线`的表示的是私有类型(private)的变量或者方法, 只能是允许这个类本身进行访问了。
