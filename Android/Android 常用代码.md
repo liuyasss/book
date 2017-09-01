@@ -24,3 +24,25 @@ public boolean onMenuOpened(int featureId, Menu menu) {
 }
 ```
 
+#### getColor()方法
+
+> 已被弃用，代替方法如下
+
+```java
+	//旧方法
+	getResources().getColor(@ColorRes int id)；
+	//新方法
+	ContextCompat.getColor(Context context, @ColorRes int id);
+
+	// 内部实现如下
+    public static final int getColor(Context context, @ColorRes int id) {
+        final int version = Build.VERSION.SDK_INT;
+        if (version >= 23) {
+            return ContextCompatApi23.getColor(context, id);
+        } else {
+            return context.getResources().getColor(id);
+        }
+    }
+	//会对版本进行判断，进行优化
+```
+
