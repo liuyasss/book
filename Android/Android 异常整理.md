@@ -17,3 +17,27 @@ textView.setText(int resId);
 如果要显示该int值，就要将int转化成String或者CharSequence，百度上很多办法。
 
 个人比较喜欢这么干：在该int值后面+""，强制转为String。简单易用。╮(╯_╰)╭
+
+#### java.util.ConcurrentModificationException
+
+> 引起原因：对Vector、ArrayList在迭代的时候如果同时对其进行修改就会抛出java.util.ConcurrentModificationException异常
+
+解决方法：使用迭代器进行操作,就不会再出现异常了
+
+```java
+public class Test {
+    public static void main(String[] args)  {
+        ArrayList<Integer> list = new ArrayList<Integer>();
+        list.add(2);
+        Iterator<Integer> iterator = list.iterator();
+        while(iterator.hasNext()){
+            Integer integer = iterator.next();
+            if(integer==2)
+                iterator.remove();   //注意这个地方
+        }
+    }
+}
+```
+
+
+
